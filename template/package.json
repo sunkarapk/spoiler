@@ -16,6 +16,9 @@
     {{#router}}
     "vue-router": "^2.0.0",
     {{/router}}
+    {{#store}}
+    "vuex": "^2.0.0",
+    {{/store}}
     "vue": "^2.0.1"
   },
   "devDependencies": {

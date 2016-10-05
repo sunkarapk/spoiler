@@ -6,7 +6,14 @@ module.exports = {
       }
 
       return options.inverse(this);
-    }
+    },
+    "unless_or": function (v1, v2, options) {
+      if (!v1 || !v2) {
+        return options.fn(this);
+      }
+
+      return options.inverse(this);
+    },
   },
   "prompts": {
     "name": {
@@ -43,6 +50,10 @@ module.exports = {
     "router": {
       "type": "confirm",
       "message": "Use vue-router to add routing logic?"
+    },
+    "store": {
+      "type": "confirm",
+      "message": "Use vuex for state management?"
     },
     "lint": {
       "type": "confirm",
@@ -81,6 +92,8 @@ module.exports = {
   },
   "filters": {
     "src/router.js": "router",
+    "src/store.js": "store",
+    "src/modules/*": "store",
     ".eslintrc.js": "lint",
     ".eslintignore": "lint",
     "config/test.env.js": "unit || e2e",

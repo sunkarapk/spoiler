@@ -6,6 +6,9 @@ import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#router}}
 import router from './router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/router}}
+{{#store}}
+import store from './store'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/store}}
 import App from './App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 /* eslint-disable no-new */
@@ -14,5 +17,8 @@ new Vue({
   {{#router}}
   router,
   {{/router}}
+  {{#store}}
+  store,
+  {{/store}}
   render: h => h(App){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
 }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
