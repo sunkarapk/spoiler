@@ -4,12 +4,12 @@
 {{/if_eq}}
 import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#router}}
-import router from './router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import router from 'src/router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/router}}
 {{#store}}
-import store from './store'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import store from 'src/store'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/store}}
-import App from './App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import App from 'src/App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 /* eslint-disable no-new */
 new Vue({

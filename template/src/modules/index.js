@@ -1,4 +1,4 @@
-import Hello from './Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Hello from 'modules/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 export {
   Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}

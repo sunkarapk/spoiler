@@ -42,7 +42,7 @@
 {{#if router}}
 export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{else}}
-import { Hello } from './components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import { Hello } from 'components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 export default {
   components: {
