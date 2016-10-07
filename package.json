@@ -1,10 +1,6 @@
 {
-  "name": "vue-cli-template-webpack",
+  "name": "spoiler",
   "version": "2.0.0",
   "license": "MIT",
-  "description": "A full-featured Webpack setup with hot-reload, lint-on-save, unit testing & css extraction.",
-  "scripts": {
-    "docs": "cd docs && gitbook serve",
-    "deploy-docs": "bash ./deploy-docs.sh"
-  }
+  "description": "A full-featured Webpack setup with vue-router, vuex, hot-reload, lint-on-save & css extraction."
 }

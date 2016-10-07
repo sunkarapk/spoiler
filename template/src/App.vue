@@ -6,35 +6,6 @@
     {{else}}
     <hello></hello>
     {{/if}}
-    <p>
-      Welcome to your Vue.js app!
-    </p>
-    <p>
-      To get a better understanding of how this boilerplate works, check out
-      <a href="http://vuejs-templates.github.io/webpack" target="_blank">its documentation</a>.
-      It is also recommended to go through the docs for
-      {{#router}}
-      <a href="https://github.com/vuejs/vue-router" target="_blank">vue-router</a>,
-      {{/router}}
-      {{#store}}
-      <a href="https://github.com/vuejs/vuex/" target="_blank">vuex</a> for state management,
-      {{/store}}
-      <a href="http://webpack.github.io/" target="_blank">Webpack</a> and
-      <a href="http://vuejs.github.io/vue-loader/" target="_blank">vue-loader</a>.
-      If you have any issues with the setup, please file an issue at this boilerplate's
-      <a href="https://github.com/vuejs-templates/webpack" target="_blank">repository</a>.
-    </p>
-    {{#unless_or router store}}
-    <p>
-      You may also want to checkout
-      {{#unless router}}
-      <a href="https://github.com/vuejs/vue-router/" target="_blank">vue-router</a> for routing{{#unless store}} and{{else}}.{{/unless}}
-      {{/unless}}
-      {{#unless store}}
-      <a href="https://github.com/vuejs/vuex/" target="_blank">vuex</a> for state management.
-      {{/unless}}
-    </p>
-    {{/unless_or}}
   </div>
 </template>
 
