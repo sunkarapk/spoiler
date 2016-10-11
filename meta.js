@@ -7,6 +7,13 @@ module.exports = {
 
       return options.inverse(this);
     },
+    "if_and_not2": function (v1, v2, options) {
+      if (v1 && !v2) {
+        return options.fn(this);
+      }
+
+      return options.inverse(this);
+    },
     "unless_or": function (v1, v2, options) {
       if (!v1 || !v2) {
         return options.fn(this);
@@ -55,6 +62,10 @@ module.exports = {
       "type": "confirm",
       "message": "Use vuex for state management?"
     },
+    "material": {
+      "type": "confirm",
+      "message": "Use material design lite for UI?"
+    },
     "lint": {
       "type": "confirm",
       "message": "Use ESLint to lint your code?"
@@ -94,6 +105,9 @@ module.exports = {
     "src/router.js": "router",
     "src/store.js": "store",
     "src/modules/*": "store",
+    "src/styles/*": "material",
+    "src/components/Navbar.vue": "material",
+    "src/components/Drawer.vue": "material",
     ".eslintrc.js": "lint",
     ".eslintignore": "lint",
     "config/test.env.js": "unit || e2e",

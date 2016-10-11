@@ -13,6 +13,12 @@
     "lint": "eslint --ext .js,.vue src{{#unit}} test/unit/specs{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}"{{/lint}}
   },
   "dependencies": {
+    {{#material}}
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "material-design-icons": "^3.0.1",
+    "material-design-lite": "^1.2.1",
+    {{/material}}
     {{#router}}
     "vue-router": "^2.0.0",
     {{/router}}
