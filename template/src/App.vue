@@ -3,7 +3,14 @@
     {{#if material}}
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
       <Navbar>
+        {{#if auth}}
+        <a class="mdl-navigation__link profile" @click="login()" v-show="!authenticated">Login</a>
+        <a class="mdl-navigation__link profile" @click="logout()" v-show="authenticated">
+          <img v-bind:src="'https://www.gravatar.com/avatar/' + gravatar + '?s=100'" />
+        </a>
+        {{else}}
         <a class="mdl-navigation__link" href="#">Link</a>
+        {{/if}}
       </Navbar>
       <Drawer>
         <a class="mdl-navigation__link" href="#">
@@ -31,6 +38,11 @@ import { {{#material}}Navbar, Drawer{{/material}}{{#if_and_not2 material router}
 {{#material}}
 import componentHandler from 'material-design-lite/material'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/material}}
+{{#auth}}
+import Auth0Lock from 'auth0-lock'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Auth0 from 'auth0-js'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import md5 from 'md5'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/auth}}
 
 export default {
   components: {
@@ -49,6 +61,72 @@ export default {
     }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/material}}
+  {{#auth}}
+  data() {
+    return {
+      authenticated: false{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      lock: new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      profile: {}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  computed: {
+    gravatar() {
+      return md5(this.profile.email || ''){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  beforeMount() {
+    this.authenticated = this.checkAuth(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+    if (this.authenticated) {
+      this.profile = JSON.parse(window.localStorage.getItem('profile')){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }
+  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  mounted() {
+    const self = this{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    const auth0 = new Auth0({
+      clientID: AUTH0_CLIENT_ID{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      domain: AUTH0_DOMAIN{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+    if (this.$route.hash) {
+      const auth = auth0.parseHash(this.$route.hash){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+      if (auth && auth.idToken) {
+        self.lock.getProfile(auth.idToken, (error, profile) => {
+          if (error) {
+            // TODO: Error
+            return;
+          }
+
+          window.localStorage.setItem('token', auth.idToken){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+          window.localStorage.setItem('profile', JSON.stringify(profile)){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+          self.authenticated = true{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+          self.profile = profile{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+          self.lock.hide(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      } else {
+        // TODO: Error
+        return;
+      }
+    }
+  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  methods: {
+    checkAuth() {
+      return !!window.localStorage.getItem('token'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    login() {
+      this.lock.show(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    logout() {
+      window.localStorage.removeItem('token'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      window.localStorage.removeItem('profile'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+      this.authenticated = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      this.profile = {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  {{/auth}}
 }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/if_and_not2}}
 </script>

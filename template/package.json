@@ -13,6 +13,11 @@
     "lint": "eslint --ext .js,.vue src{{#unit}} test/unit/specs{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}"{{/lint}}
   },
   "dependencies": {
+    {{#auth}}
+    "auth0-js": "^7.2.1",
+    "auth0-lock": "^10.4.0",
+    "md5": "^2.2.1",
+    {{/auth}}
     {{#material}}
     "less": "^2.7.1",
     "less-loader": "^2.2.3",

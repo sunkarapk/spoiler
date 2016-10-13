@@ -66,6 +66,10 @@ module.exports = {
       "type": "confirm",
       "message": "Use material design lite for UI?"
     },
+    "auth": {
+      "type": "confirm",
+      "message": "Add user management using Auth0?"
+    },
     "lint": {
       "type": "confirm",
       "message": "Use ESLint to lint your code?"

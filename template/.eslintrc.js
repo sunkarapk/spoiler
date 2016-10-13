@@ -15,6 +15,12 @@ module.exports = {
   plugins: [
     'html'
   ],
+  {{#auth}}
+  // Allow global window
+  globals: {
+    window: true
+  },
+  {{/auth}}
   {{#if_eq lintConfig "airbnb"}}
   // check if imports actually resolve
   'settings': {
