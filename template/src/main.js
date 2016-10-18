@@ -20,5 +20,11 @@ new Vue({
   {{#store}}
   store,
   {{/store}}
+  {{#if_eq build "runtime"}}
   render: h => h(App){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  {{/if_eq}}
+  {{#if_eq build "standalone"}}
+  template: '<App/>',
+  components: { App }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  {{/if_eq}}
 }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
