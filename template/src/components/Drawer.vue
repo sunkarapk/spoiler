@@ -8,7 +8,7 @@
 </template>
 
 <script>
-export default {};
+export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 </script>
 
 <style scoped lang="less">
@@ -35,24 +35,10 @@ export default {};
     padding: 16px 20px 16px 20px;
     vertical-align: middle;
 
-    div {
-      display: inline-block;
-    }
-
-    i {
-      color: @sidebarIcon;
-      font-size: 24px;
-      padding-right: 15px;
-    }
-
     &:hover, &.active {
       background-color: @sidebarHover;
       color: @white;
       opacity: 1;
-
-      i {
-        color: @white;
-      }
     }
   }
 }

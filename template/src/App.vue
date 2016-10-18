@@ -4,19 +4,16 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
       <Navbar>
         {{#if auth}}
-        <a class="mdl-navigation__link profile" @click="login()" v-show="!authenticated">Login</a>
-        <a class="mdl-navigation__link profile" @click="logout()" v-show="authenticated">
+        <Navlink class="profile" @click.native="login()" v-show="!authenticated">Login</Navlink>
+        <Navlink class="profile" @click.native="logout()" v-show="authenticated">
           <img v-bind:src="'https://www.gravatar.com/avatar/' + gravatar + '?s=100'" />
-        </a>
+        </Navlink>
         {{else}}
-        <a class="mdl-navigation__link" href="#">Link</a>
+        <Navlink>Link</Navlink>
         {{/if}}
       </Navbar>
       <Drawer>
-        <a class="mdl-navigation__link" href="#">
-          <i class="material-icons">dashboard</i>
-          <div>Dashboard</div>
-        </a>
+        <Navlink icon="dashboard">Dashboard</Navlink>
       </Drawer>
       <main class="mdl-layout__content">
         <img class="logo" src="./assets/logo.png">
@@ -34,7 +31,7 @@
 {{#if_and_not2 router material}}
 export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{else}}
-import { {{#material}}Navbar, Drawer{{/material}}{{#if_and_not2 material router}}, {{/if_and_not2}}{{#unless router}}Hello{{/unless}} } from 'components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import { {{#material}}Navbar, Drawer, Navlink{{/material}}{{#if_and_not2 material router}}, {{/if_and_not2}}{{#unless router}}Hello{{/unless}} } from 'components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#material}}
 import componentHandler from 'material-design-lite/material'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/material}}
@@ -49,6 +46,7 @@ export default {
     {{#material}}
     Navbar{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     Drawer{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    Navlink{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     {{/material}}
     {{#unless router}}
     Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
@@ -188,4 +186,17 @@ a {
   padding-top: 100px;
   {{/material}}
 }
+
+{{#auth}}
+.profile {
+  width: 80px;
+
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    margin: 12px 20px;
+  }
+}
+{{/auth}}
 </style>

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-export default {};
+export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 </script>
 
 <style scoped lang="less">
@@ -30,19 +30,6 @@ export default {};
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    {{#auth}}
-
-    &.profile {
-      width: 80px;
-
-      img {
-        height: 40px;
-        width: 40px;
-        border-radius: 20px;
-        margin: 12px 20px;
-      }
-    }
-    {{/auth}}
   }
 }
 </style>

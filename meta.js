@@ -112,6 +112,7 @@ module.exports = {
     "src/styles/*": "material",
     "src/components/Navbar.vue": "material",
     "src/components/Drawer.vue": "material",
+    "src/components/Navlink.vue": "material",
     ".eslintrc.js": "lint",
     ".eslintignore": "lint",
     "config/test.env.js": "unit || e2e",
