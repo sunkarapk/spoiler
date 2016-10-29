@@ -7,8 +7,22 @@ module.exports = {
 
       return options.inverse(this);
     },
-    "if_and_not2": function (v1, v2, options) {
+    "if_or_not": function (v1, v2, options) {
+      if (v1 || !v2) {
+        return options.fn(this);
+      }
+
+      return options.inverse(this);
+    },
+    "if_and_not": function (v1, v2, options) {
       if (v1 && !v2) {
+        return options.fn(this);
+      }
+
+      return options.inverse(this);
+    },
+    "if_and_not_and_not": function (v1, v2, v3, options) {
+      if (v1 && !v2 && !v3) {
         return options.fn(this);
       }
 
@@ -67,6 +81,7 @@ module.exports = {
       "message": "Use material design lite for UI?"
     },
     "auth": {
+      "when": "router",
       "type": "confirm",
       "message": "Add user management using Auth0?"
     },

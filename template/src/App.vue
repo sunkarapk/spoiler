@@ -23,15 +23,25 @@
     {{else}}
     <img class="logo" src="./assets/logo.png">
     {{#if router}}<router-view></router-view>{{else}}<hello></hello>{{/if}}
+    {{#auth}}
+    <p class="profile">
+      <a @click="login()" href="#" v-show="!authenticated">Login</a>
+      <a @click="logout()" href="#" v-show="authenticated">
+        <img v-bind:src="'https://www.gravatar.com/avatar/' + gravatar + '?s=100'" />
+      </a>
+    </p>
+    {{/auth}}
     {{/if}}
   </div>
 </template>
 
 <script>
-{{#if_and_not2 router material}}
+{{#if_and_not_and_not router material auth}}
 export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{else}}
-import { {{#material}}Navbar, Drawer, Navlink{{/material}}{{#if_and_not2 material router}}, {{/if_and_not2}}{{#unless router}}Hello{{/unless}} } from 'components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{#if_or_not material router}}
+import { {{#material}}Navbar, Drawer, Navlink{{/material}}{{#if_and_not material router}}, {{/if_and_not}}{{#unless router}}Hello{{/unless}} } from 'components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/if_or_not}}
 {{#material}}
 import componentHandler from 'material-design-lite/material'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/material}}
@@ -42,6 +52,7 @@ import md5 from 'md5'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/auth}}
 
 export default {
+  {{#if_or_not material router}}
   components: {
     {{#material}}
     Navbar{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
@@ -52,6 +63,7 @@ export default {
     Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     {{/unless}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  {{/if_or_not}}
   {{#material}}
   ready() {
     this.$nextTick(() => {
@@ -126,7 +138,7 @@ export default {
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/auth}}
 }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-{{/if_and_not2}}
+{{/if_and_not_and_not}}
 </script>
 {{#material}}
 
@@ -199,6 +211,7 @@ a {
     margin: 12px 20px;
   }
 {{else}}
+  margin: auto;
 }
 
 .profile img {
