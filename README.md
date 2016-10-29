@@ -1,6 +1,6 @@
 # spoiler
 
-> A full-featured Webpack setup with vue-router, vuex, material-design-lite, hot-reload, lint-on-save & css extraction.
+> A full-featured Webpack setup with vue-router, vuex, material-design-lite, auth0, vue-resource, hot-reload, lint-on-save & css extraction.
 
 ## Usage
 

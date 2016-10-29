@@ -85,6 +85,10 @@ module.exports = {
       "type": "confirm",
       "message": "Add user management using Auth0?"
     },
+    "resource": {
+      "type": "confirm",
+      "message": "Use vue-resource?"
+    },
     "lint": {
       "type": "confirm",
       "message": "Use ESLint to lint your code?"

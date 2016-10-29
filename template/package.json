@@ -24,6 +24,9 @@
     "material-design-icons": "^3.0.1",
     "material-design-lite": "^1.2.1",
     {{/material}}
+    {{#resource}}
+    "vue-resource": "^1.0.3",
+    {{/resource}}
     {{#router}}
     "vue-router": "^2.0.0",
     {{/router}}
