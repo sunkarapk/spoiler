@@ -1,6 +1,6 @@
 <template>
   <a class="mdl-navigation__link" :href="href">
-    <i v-show="icon" class="material-icons">{{icon}}</i>
+    <i v-show="icon" class="material-icons">\{{icon}}</i>
     <div>
       <slot></slot>
     </div>
@@ -23,19 +23,9 @@ export default {
 @import "../styles/variables.less";
 
 .mdl-layout__drawer {
-  .mdl-navigation {
+  .mdl-navigation .mdl-navigation__link {
     div {
       display: inline-block;
-    }
-
-    i {
-      color: @sidebarIcon;
-    }
-
-    &:hover, &.active {
-      i {
-        color: @white;
-      }
     }
   }
 }

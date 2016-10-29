@@ -190,6 +190,7 @@ a {
 {{#auth}}
 .profile {
   width: 80px;
+{{#if material}}
 
   img {
     height: 40px;
@@ -197,6 +198,15 @@ a {
     border-radius: 20px;
     margin: 12px 20px;
   }
+{{else}}
+}
+
+.profile img {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin: 12px 20px;
+{{/if}}
 }
 {{/auth}}
 </style>

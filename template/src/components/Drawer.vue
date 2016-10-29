@@ -21,24 +21,34 @@ export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
   .mdl-layout__title {
     padding-right: 40px;
-    color: @white;
+    color: @sidebarActiveText;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 20px;
     letter-spacing: 3px;
   }
 
   .mdl-navigation .mdl-navigation__link {
     color: @sidebarText;
     text-transform: uppercase;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
     text-align: left;
-    padding: 16px 20px 16px 20px;
+    padding: 16px 17px 16px 17px;
     vertical-align: middle;
+    border-left: 6px solid @sidebar;
 
     &:hover, &.active {
-      background-color: @sidebarHover;
-      color: @white;
+      color: @sidebarActiveText;
       opacity: 1;
+    }
+
+    &:hover {
+      background-color: @sidebarHover;
+      border-left-color: @sidebarHover;
+    }
+
+    &.active {
+      background-color: @sidebarActive;
+      border-left-color: @accent;
     }
   }
 }
