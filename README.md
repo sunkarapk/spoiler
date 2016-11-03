@@ -1,15 +1,40 @@
 # spoiler
 
+Single Page Application Boilerplate
+
 > A full-featured Webpack setup with vue-router, vuex, material-design-lite, auth0, vue-resource, hot-reload, lint-on-save & css extraction.
+
+I have extended the official [webpack](http://github.com/vuejs-templates/webpack) boilerplate with often used plugins and functionalities. I have made this because the official vuejs-templates maintainers wanted to keep the webpack template simple.
+
+The extra functionalities added are:
+
+- [vue-router](https://github.com/vuejs/vue-router) for routing.
+- [vuex](https://github.com/vuejs/vuex) for application states and store management.
+- [Material Design Lite](https://getmdl.com) for UI. *(Will be moving to [vue-mdl](https://github.com/posva/vue-mdl) soon once vue 2.0 is supported)*
+- [Auth0](https://auth0.com) for easy serverless user management.
+- [vue-resource](https://github.com/vuejs/vue-resource) for APIs and HTTP requests.
+
+**Every functionality mentioned above is optional which means, you can switch them off easily during the initial stage without any issue with the other functionalities.**
+
+All the functionalities have been made as independent of each other as possible.
 
 ## Usage
 
-This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It is recommended to use npm 3+ for a more efficient dependency tree.**
+With [vue-cli](https://www.npmjs.com/package/vue-cli) globally installed, just run the following command:
 
-``` bash
-$ npm install -g vue-cli
-$ vue init pksunkara/spoiler my-project
 ```
+$ npm i -g vue-cli
+$ vue init pksunkara/spoiler appname
+```
+
+Your singe page application is now ready to be developed.
+
+```
+$ npm install
+$ npm run dev
+```
+
+**It is recommended to use npm 3+ for a more efficient dependency tree.**
 
 ## What's Included
 
@@ -36,11 +61,3 @@ $ vue init pksunkara/spoiler my-project
   - Works with one command out of the box:
     - Selenium and chromedriver dependencies automatically handled.
     - Automatically spawns the Selenium server.
-
-### Fork It And Make Your Own
-
-You can fork this repo to create your own boilerplate, and use it with `vue-cli`:
-
-``` bash
-vue init username/repo my-project
-```
