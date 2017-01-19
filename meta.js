@@ -85,6 +85,10 @@ module.exports = {
       "type": "confirm",
       "message": "Add user management using Auth0?"
     },
+    "validate": {
+      "type": "confirm",
+      "message": "Use validation plugin?"
+    },
     "resource": {
       "type": "confirm",
       "message": "Use vue-resource?"

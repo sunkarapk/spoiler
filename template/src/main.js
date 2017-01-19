@@ -3,6 +3,9 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 {{/if_eq}}
 import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{#validate}}
+import Vuelidate from 'vuelidate'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/validate}}
 {{#resource}}
 import VueResource from 'vue-resource'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/resource}}
@@ -14,6 +17,9 @@ import store from 'src/store'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/store}}
 import App from 'src/App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
+{{#validate}}
+Vue.use(Vuelidate){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/validate}}
 {{#resource}}
 Vue.use(VueResource){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/resource}}
