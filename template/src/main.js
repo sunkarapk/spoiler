@@ -26,7 +26,7 @@ Vue.use(VueResource){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: '#app'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{#router}}
   router{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/router}}
