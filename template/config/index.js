@@ -25,6 +25,7 @@ module.exports = {
     env: require('./dev.env'),
     port: 8000,
     assetsSubDirectory: 'assets',
+    autoOpenBrowser: true,
     assetsPublicPath: '/',
     proxyTable: {},
     // CSS Sourcemaps off by default because relative paths are "buggy"
