@@ -2,7 +2,6 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
-var eslintFriendlyFormatter = require('eslint-friendly-formatter')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -46,7 +45,7 @@ module.exports = {
         enforce: "pre",
         include: [resolve('src'), resolve('test')],
         options: {
-          formatter: eslintFriendlyFormatter
+          formatter: require('eslint-friendly-formatter')
         }
       },
       {{/lint}}
