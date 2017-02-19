@@ -3,6 +3,9 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 {{/if_eq}}
 import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{#material}}
+import VueMdl from 'vue-mdl'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/material}}
 {{#validate}}
 import Vuelidate from 'vuelidate'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/validate}}
@@ -16,7 +19,13 @@ import router from 'src/router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import store from 'src/store'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/store}}
 import App from 'src/App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{#material}}
+import 'material-design-lite/material'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/material}}
 
+{{#material}}
+Vue.use(VueMdl){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/material}}
 {{#validate}}
 Vue.use(Vuelidate){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/validate}}

@@ -1,25 +1,32 @@
 <template>
   <div id="app">
     {{#if material}}
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
-      <Navbar>
-        {{#if auth}}
-        <Navlink class="profile" @click.native="login()" v-show="!authenticated">Login</Navlink>
-        <Navlink class="profile" @click.native="logout()" v-show="authenticated">
-          <img v-bind:src="'https://www.gravatar.com/avatar/' + gravatar + '?s=100'" />
-        </Navlink>
-        {{else}}
-        <Navlink>Link</Navlink>
-        {{/if}}
-      </Navbar>
-      <Drawer>
-        <Navlink icon="dashboard">Dashboard</Navlink>
-      </Drawer>
-      <main class="mdl-layout__content">
+    <mdl-layout fixed-header fixed-drawer>
+      <mdl-layout-header-row slot="header">
+        <mdl-layout-spacer />
+        <mdl-nav>
+          {{#if auth}}
+          <mdl-nav-link class="profile" @click.native="login()" v-show="!authenticated">Login</mdl-nav-link>
+          <mdl-nav-link class="profile" @click.native="logout()" v-show="authenticated">
+            <img v-bind:src="'https://www.gravatar.com/avatar/' + gravatar + '?s=100'" />
+          </mdl-nav-link>
+          {{else}}
+          <mdl-nav-link>Link</mdl-nav-link>
+          {{/if}}
+        </mdl-nav>
+      </mdl-layout-header-row>
+
+      <mdl-layout-drawer title="{{name}}">
+        <mdl-nav>
+          <mdl-nav-link icon="dashboard" href="#">Dashboard</mdl-nav-link>
+        </mdl-nav>
+      </mdl-layout-drawer>
+
+      <mdl-layout-content>
         <img class="logo" src="./assets/logo.png">
         {{#if router}}<router-view></router-view>{{else}}<hello></hello>{{/if}}
-      </main>
-    </div>
+      </mdl-layout-content>
+    </mdl-layout>
     {{else}}
     <img class="logo" src="./assets/logo.png">
     {{#if router}}<router-view></router-view>{{else}}<hello></hello>{{/if}}
@@ -36,15 +43,12 @@
 </template>
 
 <script>
-{{#if_and_not_and_not router material auth}}
+{{#if_and_not router auth}}
 export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{else}}
-{{#if_or_not material router}}
-import { {{#material}}Navbar, Drawer, Navlink{{/material}}{{#if_and_not material router}}, {{/if_and_not}}{{#unless router}}Hello{{/unless}} } from 'components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-{{/if_or_not}}
-{{#material}}
-import componentHandler from 'material-design-lite/material'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-{{/material}}
+{{#unless router}}
+import { Hello } from 'components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/unless}}
 {{#auth}}
 import Auth0Lock from 'auth0-lock'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import Auth0 from 'auth0-js'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
@@ -52,25 +56,11 @@ import md5 from 'md5'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/auth}}
 
 export default {
-  {{#if_or_not material router}}
+  {{#unless router}}
   components: {
-    {{#material}}
-    Navbar{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    Drawer{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    Navlink{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    {{/material}}
-    {{#unless router}}
     Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    {{/unless}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  {{/if_or_not}}
-  {{#material}}
-  ready() {
-    this.$nextTick(() => {
-      componentHandler.upgradeDom();
-    }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  {{/material}}
+  {{/unless}}
   {{#auth}}
   data() {
     return {
@@ -138,7 +128,7 @@ export default {
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/auth}}
 }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-{{/if_and_not_and_not}}
+{{/if_and_not}}
 </script>
 {{#material}}
 
@@ -198,8 +188,8 @@ a {
   padding-top: 100px;
   {{/material}}
 }
-
 {{#auth}}
+
 .profile {
   width: 80px;
 {{#if material}}
@@ -222,4 +212,71 @@ a {
 {{/if}}
 }
 {{/auth}}
+{{#material}}
+
+.mdl-layout__drawer {
+  box-shadow: none;
+  border-right: 0;
+  background: @sidebar;
+
+  .mdl-layout-title {
+    padding-right: 40px;
+    color: @sidebarActiveText;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+
+  .mdl-navigation .mdl-navigation__link {
+    color: @sidebarText;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: left;
+    padding: 16px 17px 16px 17px;
+    vertical-align: middle;
+    border-left: 6px solid @sidebar;
+
+    &:hover, &.active {
+      color: @sidebarActiveText;
+      opacity: 1;
+    }
+
+    &:hover {
+      background-color: @sidebarHover;
+      border-left-color: @sidebarHover;
+    }
+
+    &.active {
+      background-color: @sidebarActive;
+      border-left-color: @accent;
+    }
+
+    div {
+      display: inline-block;
+    }
+
+    .material-icons {
+      font-size: 24px;
+      padding-right: 15px;
+    }
+  }
+}
+
+.mdl-layout__header {
+  box-shadow: none;
+  border: 0;
+  background: @white;
+
+  .mdl-layout__header-row {
+    padding: 0;
+  }
+
+  .mdl-navigation .mdl-navigation__link {
+    color: @sidebar;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}
+{{/material}}
 </style>

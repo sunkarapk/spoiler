@@ -23,18 +23,19 @@
     "less-loader": "^2.2.3",
     "material-design-icons": "^3.0.1",
     "material-design-lite": "^1.2.1",
+    "vue-mdl": "^1.1.0",
     {{/material}}
     {{#validate}}
     "vuelidate": "^0.2.0",
     {{/validate}}
     {{#resource}}
-    "vue-resource": "^1.0.3",
+    "vue-resource": "^1.2.0",
     {{/resource}}
     {{#router}}
-    "vue-router": "^2.0.0",
+    "vue-router": "^2.2.1",
     {{/router}}
     {{#store}}
-    "vuex": "^2.0.0",
+    "vuex": "^2.1.2",
     {{/store}}
     "vue": "^2.1.10"
   },

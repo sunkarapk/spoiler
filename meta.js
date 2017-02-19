@@ -21,13 +21,6 @@ module.exports = {
 
       return options.inverse(this);
     },
-    "if_and_not_and_not": function (v1, v2, v3, options) {
-      if (v1 && !v2 && !v3) {
-        return options.fn(this);
-      }
-
-      return options.inverse(this);
-    },
     "unless_or": function (v1, v2, options) {
       if (!v1 || !v2) {
         return options.fn(this);
@@ -133,9 +126,6 @@ module.exports = {
     "src/store.js": "store",
     "src/modules/*": "store",
     "src/styles/*": "material",
-    "src/components/Navbar.vue": "material",
-    "src/components/Drawer.vue": "material",
-    "src/components/Navlink.vue": "material",
     ".eslintrc.js": "lint",
     ".eslintignore": "lint",
     "config/test.env.js": "unit || e2e",
