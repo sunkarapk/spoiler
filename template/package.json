@@ -14,7 +14,7 @@
   },
   "dependencies": {
     {{#auth}}
-    "auth0-js": "^7.2.1",
+    "auth0-js": "^8.2.0",
     "auth0-lock": "^10.4.0",
     "md5": "^2.2.1",
     {{/auth}}

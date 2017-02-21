@@ -53,6 +53,9 @@ import { Hello } from 'components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import Auth0Lock from 'auth0-lock'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import Auth0 from 'auth0-js'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import md5 from 'md5'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
+const AUTH0_CLIENT_ID = ''{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+const AUTH0_DOMAIN = ''{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/auth}}
 
 export default {
@@ -83,7 +86,7 @@ export default {
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   mounted() {
     const self = this{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    const auth0 = new Auth0({
+    const auth0 = new Auth0.WebAuth({
       clientID: AUTH0_CLIENT_ID{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
       domain: AUTH0_DOMAIN{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
@@ -107,7 +110,6 @@ export default {
         }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
       } else {
         // TODO: Error
-        return;
       }
     }
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
