@@ -13,12 +13,12 @@ import Vuelidate from 'vuelidate'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import VueResource from 'vue-resource'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/resource}}
 {{#router}}
-import router from 'src/router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import router from '@/router'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/router}}
 {{#store}}
-import store from 'src/store'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import store from '@/store'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/store}}
-import App from 'src/App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import App from '@/App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#material}}
 import 'material-design-lite/material'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/material}}
