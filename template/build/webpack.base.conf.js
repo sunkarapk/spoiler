@@ -26,7 +26,7 @@ module.exports = {
     ],
     alias: {
       {{#if_eq build "standalone"}}
-      'vue$': 'vue/dist/vue.common.js',
+      'vue$': 'vue/dist/vue.esm.js',
       {{/if_eq}}
       'src': resolve('src'),
       'assets': resolve('src/assets'),

@@ -33,6 +33,8 @@ Vue.use(Vuelidate){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 Vue.use(VueResource){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/resource}}
 
+Vue.devtool.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
