@@ -63,7 +63,7 @@ module.exports = {
     },
     "router": {
       "type": "confirm",
-      "message": "Use vue-router to add routing logic?"
+      "message": "Use vue-router for routing logic?"
     },
     "store": {
       "type": "confirm",
@@ -122,9 +122,8 @@ module.exports = {
     }
   },
   "filters": {
-    "src/router.js": "router",
-    "src/store.js": "store",
-    "src/modules/*": "store",
+    "src/router/**/*": "router",
+    "src/store/**/*": "store",
     "src/styles/*": "material",
     ".eslintrc.js": "lint",
     ".eslintignore": "lint",

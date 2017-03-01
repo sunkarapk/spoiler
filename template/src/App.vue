@@ -47,7 +47,7 @@
 export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{else}}
 {{#unless router}}
-import { Hello } from '@/components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Hello from '@/components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/unless}}
 {{#auth}}
 import Auth0Lock from 'auth0-lock'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
