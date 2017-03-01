@@ -51,7 +51,6 @@ import { Hello } from '@/components'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/unless}}
 {{#auth}}
 import Auth0Lock from 'auth0-lock'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import Auth0 from 'auth0-js'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import md5 from 'md5'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 const AUTH0_CLIENT_ID = ''{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
@@ -86,14 +85,8 @@ export default {
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   mounted() {
     const self = this{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    const auth0 = new Auth0.WebAuth({
-      clientID: AUTH0_CLIENT_ID{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-      domain: AUTH0_DOMAIN{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
-    if (this.$route.hash) {
-      const auth = auth0.parseHash(this.$route.hash){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-
+    self.lock.on('authenticated', (auth) => {
       if (auth && auth.idToken) {
         self.lock.getProfile(auth.idToken, (error, profile) => {
           if (error) {
@@ -111,7 +104,7 @@ export default {
       } else {
         // TODO: Error
       }
-    }
+    }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   methods: {
     checkAuth() {
