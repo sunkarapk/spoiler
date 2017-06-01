@@ -87,23 +87,19 @@ export default {
     const self = this{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
     self.lock.on('authenticated', (auth) => {
-      if (auth && auth.idToken) {
-        self.lock.getProfile(auth.idToken, (error, profile) => {
-          if (error) {
-            // TODO: Error
-            return;
-          }
+      self.lock.getUserInfo(auth.accessToken, (error, profile) => {
+        if (error) {
+          // TODO: Error
+          return;
+        }
 
-          window.localStorage.setItem('token', auth.idToken){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-          window.localStorage.setItem('profile', JSON.stringify(profile)){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        window.localStorage.setItem('token', auth.accessToken){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        window.localStorage.setItem('profile', JSON.stringify(profile)){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
-          self.authenticated = true{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-          self.profile = profile{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-          self.lock.hide(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-        }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-      } else {
-        // TODO: Error
-      }
+        self.authenticated = true{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        self.profile = profile{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        self.lock.hide(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
     }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   methods: {
