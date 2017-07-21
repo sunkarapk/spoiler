@@ -142,6 +142,8 @@ module.exports = {
     "src/router/**/*": "router",
     "src/store/**/*": "store",
     "src/styles/*": "material",
+    "src/components/Auth*": "auth",
+    "src/auth.js": "auth",
     ".eslintrc.js": "lint",
     ".eslintignore": "lint",
     "config/test.env.js": "unit || e2e",

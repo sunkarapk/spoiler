@@ -32,8 +32,8 @@
     {{#if router}}<router-view></router-view>{{else}}<hello></hello>{{/if}}
     {{#auth}}
     <p class="profile">
-      <a @click="login()" href="#" v-show="!authenticated">Login</a>
-      <a @click="logout()" href="#" v-show="authenticated">
+      <a @click="auth.login()" href="#" v-show="!auth.authenticated">Login</a>
+      <a @click="auth.logout()" href="#" v-show="auth.authenticated">
         <img v-bind:src="'https://www.gravatar.com/avatar/' + gravatar + '?s=100'" />
       </a>
     </p>
@@ -50,11 +50,8 @@ export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import Hello from '@/components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/unless}}
 {{#auth}}
-import Auth0Lock from 'auth0-lock'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import auth from '@/auth'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import md5 from 'md5'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-
-const AUTH0_CLIENT_ID = ''{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-const AUTH0_DOMAIN = ''{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/auth}}
 
 export default {
@@ -66,56 +63,16 @@ export default {
   {{#auth}}
   data() {
     return {
-      authenticated: false{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-      lock: new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-      profile: {}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      auth{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   computed: {
     gravatar() {
-      return md5(this.profile.email || ''){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      return md5(auth.profile.email || ''){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   beforeMount() {
-    this.authenticated = this.checkAuth(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-
-    if (this.authenticated) {
-      this.profile = JSON.parse(window.localStorage.getItem('profile')){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    }
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  mounted() {
-    const self = this{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-
-    self.lock.on('authenticated', (auth) => {
-      self.lock.getUserInfo(auth.accessToken, (error, profile) => {
-        if (error) {
-          // TODO: Error
-          return;
-        }
-
-        window.localStorage.setItem('token', auth.accessToken){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-        window.localStorage.setItem('profile', JSON.stringify(profile)){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-
-        self.authenticated = true{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-        self.profile = profile{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-        self.lock.hide(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-      }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  methods: {
-    checkAuth() {
-      return !!window.localStorage.getItem('token'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    login() {
-      this.lock.show(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    logout() {
-      window.localStorage.removeItem('token'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-      window.localStorage.removeItem('profile'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-
-      this.authenticated = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-      this.profile = {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    auth.init(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/auth}}
 }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
