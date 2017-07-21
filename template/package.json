@@ -29,9 +29,14 @@
     {{#validate}}
     "vuelidate": "^0.2.0",
     {{/validate}}
-    {{#resource}}
+    {{#if_eq api "http"}}
     "vue-resource": "^1.2.0",
-    {{/resource}}
+    {{/if_eq}}
+    {{#if_eq api "graphql"}}
+    "vue-apollo": "2.1.0-beta.18",
+    "apollo-client": "1.9.0-0",
+    "gql": "1.1.2",
+    {{/if_eq}}
     {{#router}}
     "vue-router": "^2.6.0",
     {{/router}}

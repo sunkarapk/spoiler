@@ -13,6 +13,7 @@ The extra functionalities added are:
 - [Material Design Lite](https://getmdl.com) for UI. *(Will be moving to [vue-mdl](https://github.com/posva/vue-mdl) soon once vue 2.0 is supported)*
 - [Auth0](https://auth0.com) for easy serverless user management.
 - [vue-resource](https://github.com/vuejs/vue-resource) for APIs and HTTP requests.
+- [vue-apollo](https://github.com/Akryum/vue-apollo) for GraphQL support.
 
 **Every functionality mentioned above is optional which means, you can switch them off easily during the initial stage without any issue with the other functionalities.**
 

@@ -82,9 +82,26 @@ module.exports = {
       "type": "confirm",
       "message": "Use validation plugin?"
     },
-    "resource": {
-      "type": "confirm",
-      "message": "Use vue-resource?"
+    "api": {
+      "type": "list",
+      "message": "Which API will you be working with?",
+      "choices": [
+        {
+          "name": "GraphQL",
+          "value": "graphql",
+          "short": "graphql"
+        },
+        {
+          "name": "HTTP",
+          "value": "http",
+          "short": "http"
+        },
+        {
+          "name": "none (configure it yourself)",
+          "value": "none",
+          "short": "none"
+        }
+      ]
     },
     "lint": {
       "type": "confirm",
