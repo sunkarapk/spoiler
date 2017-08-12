@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js"{{#unit}},
+    "build": "node build/build.js"{{#storybook}},
+    "storybook": "start-storybook -p 6006 -c config/storybook",
+    "build-storybook": "build-storybook -c config/storybook"{{/storybook}}{{#unit}},
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run"{{/unit}}{{#e2e}},
     "e2e": "node test/e2e/runner.js"{{/e2e}}{{#if_or unit e2e}},
     "test": "{{#unit}}npm run unit{{/unit}}{{#unit}}{{#e2e}} && {{/e2e}}{{/unit}}{{#e2e}}npm run e2e{{/e2e}}"{{/if_or}}{{#lint}},
@@ -15,8 +17,8 @@
   },
   "dependencies": {
     {{#auth}}
-    "auth0-js": "^8.2.0",
-    "auth0-lock": "^10.4.0",
+    "auth0-js": "^8.9.1",
+    "auth0-lock": "^10.20.0",
     "md5": "^2.2.1",
     {{/auth}}
     {{#material}}
@@ -34,7 +36,7 @@
     {{/if_eq}}
     {{#if_eq api "graphql"}}
     "vue-apollo": "2.1.0-beta.18",
-    "apollo-client": "1.9.0-0",
+    "apollo-client": "1.9.1",
     "graphql-tag": "^2.4.2",
     {{/if_eq}}
     {{#router}}
@@ -47,6 +49,10 @@
     "vue-types": "^1.0.1"
   },
   "devDependencies": {
+    {{#storybook}}
+    "@storybook/addon-knobs": "^3.2.0",
+    "@storybook/vue": "^3.2.3",
+    {{/storybook}}
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     {{#lint}}
@@ -79,7 +85,7 @@
     {{/if_eq}}
     {{/lint}}
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.14.1",
+    "express": "^4.15.4",
     "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "^0.11.1",
     "friendly-errors-webpack-plugin": "^1.1.3",

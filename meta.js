@@ -136,20 +136,26 @@ module.exports = {
     "e2e": {
       "type": "confirm",
       "message": "Setup e2e tests with Nightwatch?"
+    },
+    "storybook": {
+      "type": "confirm",
+      "message": "Add storybook?"
     }
   },
   "filters": {
     "src/router/**/*": "router",
     "src/store/**/*": "store",
     "src/styles/*": "material",
-    "src/components/Auth*": "auth",
-    "src/auth.js": "auth",
+    "src/components/Auth*": "router && auth",
+    "src/auth.js": "router && auth",
     ".eslintrc.js": "lint",
     ".eslintignore": "lint",
     "config/test.env.js": "unit || e2e",
     "test/unit/**/*": "unit",
     "build/webpack.test.conf.js": "unit",
-    "test/e2e/**/*": "e2e"
+    "test/e2e/**/*": "e2e",
+    "config/storybook/**/*": "storybook",
+    "src/stories.js": "storybook"
   },
   "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
 };
