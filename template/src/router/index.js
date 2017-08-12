@@ -14,19 +14,19 @@ Vue.use(VueRouter){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 const routes = [
   {{#auth}}
   {
-    path: '/forbidden'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    name: 'AuthForbidden'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    path: '/forbidden',
+    name: 'AuthForbidden',
     component: AuthForbidden{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  },
   {
-    path: '/callback'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    name: 'AuthCallback'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    path: '/callback',
+    name: 'AuthCallback',
     component: AuthCallback{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  },
   {{/auth}}
   {
-    path: '/'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    name: 'Hello'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    path: '/',
+    name: 'Hello',
     component: Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     {{#auth}}
     // Uncomment out the following part to secure this route with authentication
@@ -39,7 +39,7 @@ const routes = [
 
 /* eslint-disable no-new */
 const router = new VueRouter({
-  routes{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  routes,
   mode: 'history'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
 }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#auth}}
@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.auth)) {
     if (!auth.isLoggedIn()) {
       return next({
-        name: 'AuthForbidden'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+        name: 'AuthForbidden',
         query: {
           redirect: to.fullPath{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
         }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}

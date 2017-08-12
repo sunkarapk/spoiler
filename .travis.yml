@@ -1,0 +1,131 @@
+language: node_js
+sudo: false
+node_js:
+  - "8"
+script: bash test.sh
+notifications:
+  email: false
+env:
+  - BUILD=runtime API=none LINT=no
+  - BUILD=runtime API=none LINTCONFIG=standard
+  - BUILD=runtime API=none LINTCONFIG=airbnb
+
+  - API=graphql LINT=no
+  - API=graphql LINTCONFIG=standard
+  - API=graphql LINTCONFIG=airbnb
+  - API=http LINT=no
+  - API=http LINTCONFIG=standard
+  - API=http LINTCONFIG=airbnb
+  - API=none LINT=no
+  - API=none LINTCONFIG=standard
+  - API=none LINTCONFIG=airbnb
+
+  - ROUTER=no API=graphql LINT=no
+  - ROUTER=no API=graphql LINTCONFIG=standard
+  - ROUTER=no API=graphql LINTCONFIG=airbnb
+  - ROUTER=no API=http LINT=no
+  - ROUTER=no API=http LINTCONFIG=standard
+  - ROUTER=no API=http LINTCONFIG=airbnb
+  - ROUTER=no API=none LINT=no
+  - ROUTER=no API=none LINTCONFIG=standard
+  - ROUTER=no API=none LINTCONFIG=airbnb
+
+  - AUTH=no API=graphql LINT=no
+  - AUTH=no API=graphql LINTCONFIG=standard
+  - AUTH=no API=graphql LINTCONFIG=airbnb
+  - AUTH=no API=http LINT=no
+  - AUTH=no API=http LINTCONFIG=standard
+  - AUTH=no API=http LINTCONFIG=airbnb
+  - AUTH=no API=none LINT=no
+  - AUTH=no API=none LINTCONFIG=standard
+  - AUTH=no API=none LINTCONFIG=airbnb
+
+  - STORE=no API=graphql LINT=no
+  - STORE=no API=graphql LINTCONFIG=standard
+  - STORE=no API=graphql LINTCONFIG=airbnb
+  - STORE=no API=http LINT=no
+  - STORE=no API=http LINTCONFIG=standard
+  - STORE=no API=http LINTCONFIG=airbnb
+  - STORE=no API=none LINT=no
+  - STORE=no API=none LINTCONFIG=standard
+  - STORE=no API=none LINTCONFIG=airbnb
+
+  - ROUTER=no STORE=no API=graphql LINT=no
+  - ROUTER=no STORE=no API=graphql LINTCONFIG=standard
+  - ROUTER=no STORE=no API=graphql LINTCONFIG=airbnb
+  - ROUTER=no STORE=no API=http LINT=no
+  - ROUTER=no STORE=no API=http LINTCONFIG=standard
+  - ROUTER=no STORE=no API=http LINTCONFIG=airbnb
+  - ROUTER=no STORE=no API=none LINT=no
+  - ROUTER=no STORE=no API=none LINTCONFIG=standard
+  - ROUTER=no STORE=no API=none LINTCONFIG=airbnb
+
+  - AUTH=no STORE=no API=graphql LINT=no
+  - AUTH=no STORE=no API=graphql LINTCONFIG=standard
+  - AUTH=no STORE=no API=graphql LINTCONFIG=airbnb
+  - AUTH=no STORE=no API=http LINT=no
+  - AUTH=no STORE=no API=http LINTCONFIG=standard
+  - AUTH=no STORE=no API=http LINTCONFIG=airbnb
+  - AUTH=no STORE=no API=none LINT=no
+  - AUTH=no STORE=no API=none LINTCONFIG=standard
+  - AUTH=no STORE=no API=none LINTCONFIG=airbnb
+
+  - MATERIAL=no API=graphql LINT=no
+  - MATERIAL=no API=graphql LINTCONFIG=standard
+  - MATERIAL=no API=graphql LINTCONFIG=airbnb
+  - MATERIAL=no API=http LINT=no
+  - MATERIAL=no API=http LINTCONFIG=standard
+  - MATERIAL=no API=http LINTCONFIG=airbnb
+  - MATERIAL=no API=none LINT=no
+  - MATERIAL=no API=none LINTCONFIG=standard
+  - MATERIAL=no API=none LINTCONFIG=airbnb
+
+  - ROUTER=no MATERIAL=no API=graphql LINT=no
+  - ROUTER=no MATERIAL=no API=graphql LINTCONFIG=standard
+  - ROUTER=no MATERIAL=no API=graphql LINTCONFIG=airbnb
+  - ROUTER=no MATERIAL=no API=http LINT=no
+  - ROUTER=no MATERIAL=no API=http LINTCONFIG=standard
+  - ROUTER=no MATERIAL=no API=http LINTCONFIG=airbnb
+  - ROUTER=no MATERIAL=no API=none LINT=no
+  - ROUTER=no MATERIAL=no API=none LINTCONFIG=standard
+  - ROUTER=no MATERIAL=no API=none LINTCONFIG=airbnb
+
+  - AUTH=no MATERIAL=no API=graphql LINT=no
+  - AUTH=no MATERIAL=no API=graphql LINTCONFIG=standard
+  - AUTH=no MATERIAL=no API=graphql LINTCONFIG=airbnb
+  - AUTH=no MATERIAL=no API=http LINT=no
+  - AUTH=no MATERIAL=no API=http LINTCONFIG=standard
+  - AUTH=no MATERIAL=no API=http LINTCONFIG=airbnb
+  - AUTH=no MATERIAL=no API=none LINT=no
+  - AUTH=no MATERIAL=no API=none LINTCONFIG=standard
+  - AUTH=no MATERIAL=no API=none LINTCONFIG=airbnb
+
+  - STORE=no MATERIAL=no API=graphql LINT=no
+  - STORE=no MATERIAL=no API=graphql LINTCONFIG=standard
+  - STORE=no MATERIAL=no API=graphql LINTCONFIG=airbnb
+  - STORE=no MATERIAL=no API=http LINT=no
+  - STORE=no MATERIAL=no API=http LINTCONFIG=standard
+  - STORE=no MATERIAL=no API=http LINTCONFIG=airbnb
+  - STORE=no MATERIAL=no API=none LINT=no
+  - STORE=no MATERIAL=no API=none LINTCONFIG=standard
+  - STORE=no MATERIAL=no API=none LINTCONFIG=airbnb
+
+  - ROUTER=no STORE=no MATERIAL=no API=graphql LINT=no
+  - ROUTER=no STORE=no MATERIAL=no API=graphql LINTCONFIG=standard
+  - ROUTER=no STORE=no MATERIAL=no API=graphql LINTCONFIG=airbnb
+  - ROUTER=no STORE=no MATERIAL=no API=http LINT=no
+  - ROUTER=no STORE=no MATERIAL=no API=http LINTCONFIG=standard
+  - ROUTER=no STORE=no MATERIAL=no API=http LINTCONFIG=airbnb
+  - ROUTER=no STORE=no MATERIAL=no API=none LINT=no
+  - ROUTER=no STORE=no MATERIAL=no API=none LINTCONFIG=standard
+  - ROUTER=no STORE=no MATERIAL=no API=none LINTCONFIG=airbnb
+
+  - AUTH=no STORE=no MATERIAL=no API=graphql LINT=no
+  - AUTH=no STORE=no MATERIAL=no API=graphql LINTCONFIG=standard
+  - AUTH=no STORE=no MATERIAL=no API=graphql LINTCONFIG=airbnb
+  - AUTH=no STORE=no MATERIAL=no API=http LINT=no
+  - AUTH=no STORE=no MATERIAL=no API=http LINTCONFIG=standard
+  - AUTH=no STORE=no MATERIAL=no API=http LINTCONFIG=airbnb
+  - AUTH=no STORE=no MATERIAL=no API=none LINT=no
+  - AUTH=no STORE=no MATERIAL=no API=none LINTCONFIG=standard
+  - AUTH=no STORE=no MATERIAL=no API=none LINTCONFIG=airbnb

@@ -8,7 +8,7 @@
 import auth from '@/auth'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 export default {
-  beforeMount() {
+  beforeMount{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
     if (auth.isLoggedIn()) {
       this.$router.replace(this.$route.query.redirect){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
     }

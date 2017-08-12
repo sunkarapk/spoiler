@@ -5,12 +5,12 @@
 import auth from '@/auth'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 export default {
-  mounted() {
+  mounted{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
     auth.lock.on('authenticated', (response) => {
       auth.lock.getUserInfo(response.accessToken, (error, profile) => {
         if (error) {
           // TODO: Error
-          return;
+          return{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
         }
 
         window.localStorage.setItem('token', response.accessToken){{#if_eq lintConfig "airbnb"}};{{/if_eq}}

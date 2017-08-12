@@ -1,9 +1,10 @@
-set -e
+#!/bin/bash
+set -ev
 
-yes "" | ./node_modules/.bin/vue init . test
-
+node generate.js
 cd test
 npm install
-npm run lint
-npm test
+if [ "${LINTCONFIG}" ]; then
+	npm run lint
+fi
 npm run build

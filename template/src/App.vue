@@ -61,17 +61,17 @@ export default {
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/unless}}
   {{#auth}}
-  data() {
+  data{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
     return {
       auth{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  },
   computed: {
-    gravatar() {
+    gravatar{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
       return md5(auth.profile.email || ''){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  beforeMount() {
+  },
+  beforeMount{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
     auth.init(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   {{/auth}}
