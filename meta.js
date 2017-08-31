@@ -78,6 +78,11 @@ module.exports = {
       "type": "confirm",
       "message": "Add user management using Auth0?"
     },
+    "persist": {
+      "when": "store",
+      "type": "confirm",
+      "message": "Persist state to localstorage?"
+    },
     "validate": {
       "type": "confirm",
       "message": "Use validation plugin?"

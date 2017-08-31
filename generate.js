@@ -19,6 +19,9 @@ var choices = {
   AUTH: {
     no: ['n', ENTER],
   },
+  PERSIST: {
+    no: ['n', ENTER],
+  },
   VALIDATE: {
     no: ['n', ENTER],
   },
@@ -50,6 +53,12 @@ var chooseCombo = function () {
 
       case 'AUTH':
         if (process.env.ROUTER == 'no') {
+          return;
+        }
+        break;
+
+      case 'PERSIST':
+        if (process.env.STORE == 'no') {
           return;
         }
         break;

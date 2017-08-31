@@ -45,6 +45,9 @@
     {{#store}}
     "vuex": "^2.1.2",
     {{/store}}
+    {{#persist}}
+    "vuex-persistedstate": "^2.0.0",
+    {{/persist}}
     "vue": "^2.4.2",
     "vue-types": "^1.0.1"
   },
