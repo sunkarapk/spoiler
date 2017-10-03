@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
+    "start": "npm run dev",
     "build": "node build/build.js"{{#storybook}},
     "storybook": "start-storybook -p 6006 -c config/storybook",
     "build-storybook": "build-storybook -c config/storybook"{{/storybook}}{{#unit}},
