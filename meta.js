@@ -118,7 +118,7 @@ module.exports = {
       "message": "Pick an ESLint preset",
       "choices": [
         {
-          "name": "Standard (https://github.com/feross/standard)",
+          "name": "Standard (https://github.com/standard/standard)",
           "value": "standard",
           "short": "Standard"
         },
