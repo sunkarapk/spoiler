@@ -82,7 +82,7 @@ var loop = function(combo) {
     setTimeout(function() {
       proc.stdin.write(combo[0]);
       loop(combo.slice(1));
-    }, 200);
+    }, 1000);
   } else {
     proc.stdin.end();
   }
