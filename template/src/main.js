@@ -13,7 +13,7 @@ import Vuelidate from 'vuelidate'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import VueResource from 'vue-resource'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/if_eq}}
 {{#if_eq api "graphql"}}
-import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import { ApolloClient, createNetworkInterface } from 'apollo-client'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 import VueApollo from 'vue-apollo'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/if_eq}}
 {{#router}}
@@ -31,7 +31,7 @@ import 'material-design-lite/material'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 const GRAPHQL_ENDPOINT = 'http://localhost:8080/graphql'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 const apolloClient = new ApolloClient({
-  networkInterface: createBatchingNetworkInterface({
+  networkInterface: createNetworkInterface({
     uri: GRAPHQL_ENDPOINT{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   }),
   connectToDevTools: true{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
