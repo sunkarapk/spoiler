@@ -44,38 +44,38 @@
 
 <script>
 {{#if_and_not router auth}}
-export default {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+export default {}
 {{else}}
 {{#unless router}}
-import Hello from '@/components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Hello from '@/components/Hello'
 {{/unless}}
 {{#auth}}
-import auth from '@/auth'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import md5 from 'md5'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import auth from '@/auth'
+import md5 from 'md5'
 {{/auth}}
 
 export default {
   {{#unless router}}
   components: {
-    Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    Hello
+  }
   {{/unless}}
   {{#auth}}
-  data{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
+  data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     return {
-      auth{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      auth
+    }
   },
   computed: {
-    gravatar{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
-      return md5(auth.profile.email || ''){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    gravatar{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
+      return md5(auth.profile.email || '')
+    }
   },
-  beforeMount{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
-    auth.init(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  beforeMount{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
+    auth.init()
+  }
   {{/auth}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+}
 {{/if_and_not}}
 </script>
 {{#material}}

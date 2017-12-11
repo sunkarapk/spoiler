@@ -1,19 +1,19 @@
-import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import Vuex from 'vuex'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Vue from 'vue'
+import Vuex from 'vuex'
 {{#persist}}
-import createPersistedState from 'vuex-persistedstate'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import createPersistedState from 'vuex-persistedstate'
 {{/persist}}
 
-import Hello from '@/store/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Hello from '@/store/Hello'
 
-Vue.use(Vuex){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+Vue.use(Vuex)
 
 /* eslint-disable no-new */
 const store = new Vuex.Store({
   modules: {
-    Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    Hello
   }{{#persist}},
-  plugins: [createPersistedState()]{{/persist}}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-}){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  plugins: [createPersistedState()]{{/persist}}
+})
 
-export default store{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+export default store

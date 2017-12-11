@@ -1,7 +1,7 @@
-import Auth0Lock from 'auth0-lock'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Auth0Lock from 'auth0-lock'
 
-const AUTH0_CLIENT_ID = ''{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-const AUTH0_DOMAIN = ''{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+const AUTH0_CLIENT_ID = ''
+const AUTH0_DOMAIN = ''
 
 export default {
   authenticated: false,
@@ -9,35 +9,35 @@ export default {
   lock: new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
       redirectUrl: 'http://localhost:8000/callback',
-      responseType: 'token'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      responseType: 'token'
+    }
   }),
 
   profile: {},
 
-  isLoggedIn{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
-    return !!window.localStorage.getItem('token'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  isLoggedIn{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
+    return !!window.localStorage.getItem('token')
   },
 
-  init{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
-    this.authenticated = this.isLoggedIn(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  init{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
+    this.authenticated = this.isLoggedIn()
 
     if (this.authenticated) {
-      this.profile = JSON.parse(window.localStorage.getItem('profile')){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      this.profile = JSON.parse(window.localStorage.getItem('profile'))
     }
   },
 
-  login{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
-    this.lock.show(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  login{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
+    this.lock.show()
   },
 
-  logout{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
-    window.localStorage.removeItem('token'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    window.localStorage.removeItem('profile'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  logout{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
+    window.localStorage.removeItem('token')
+    window.localStorage.removeItem('profile')
 
-    this.authenticated = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    this.profile = {}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    this.authenticated = false
+    this.profile = {}
 
-    window.location.reload(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    window.location.reload()
+  }
+}

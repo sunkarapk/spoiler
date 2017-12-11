@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import auth from '@/auth'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import auth from '@/auth'
 
 export default {
-  beforeMount{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
+  beforeMount{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     if (auth.isLoggedIn()) {
-      this.$router.replace(this.$route.query.redirect){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      this.$router.replace(this.$route.query.redirect)
     }
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  }
+}
 </script>

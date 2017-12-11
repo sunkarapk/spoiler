@@ -2,26 +2,26 @@
 </template>
 
 <script>
-import auth from '@/auth'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import auth from '@/auth'
 
 export default {
-  mounted{{#if_eq lintConfig "standard"}} {{/if_eq}}() {
+  mounted{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     auth.lock.on('authenticated', (response) => {
       auth.lock.getUserInfo(response.accessToken, (error, profile) => {
         if (error) {
           // TODO: Error
-          return{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+          return
         }
 
-        window.localStorage.setItem('token', response.accessToken){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-        window.localStorage.setItem('profile', JSON.stringify(profile)){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        window.localStorage.setItem('token', response.accessToken)
+        window.localStorage.setItem('profile', JSON.stringify(profile))
 
-        auth.authenticated = true{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-        auth.profile = profile{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        auth.authenticated = true
+        auth.profile = profile
 
-        this.$router.go(-1){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-      }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        this.$router.go(-1)
+      })
+    })
+  }
+}
 </script>
