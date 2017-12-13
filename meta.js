@@ -1,58 +1,58 @@
-const path = require('path');
-const fs = require('fs');
+const path = require('path')
+const fs = require('fs')
 const {
   sortDependencies,
   installDependencies,
   runLintFix,
-  printMessage
+  printMessage,
 } = require('./utils')
 
 module.exports = {
   helpers: {
-    if_or: function (v1, v2, options) {
+    if_or: function(v1, v2, options) {
       if (v1 || v2) {
-        return options.fn(this);
+        return options.fn(this)
       }
 
-      return options.inverse(this);
+      return options.inverse(this)
     },
     if_or_not: function (v1, v2, options) {
       if (v1 || !v2) {
-        return options.fn(this);
+        return options.fn(this)
       }
 
-      return options.inverse(this);
+      return options.inverse(this)
     },
     if_and_not: function (v1, v2, options) {
       if (v1 && !v2) {
-        return options.fn(this);
+        return options.fn(this)
       }
 
-      return options.inverse(this);
+      return options.inverse(this)
     },
     unless_or: function (v1, v2, options) {
       if (!v1 || !v2) {
-        return options.fn(this);
+        return options.fn(this)
       }
 
-      return options.inverse(this);
+      return options.inverse(this)
     },
   },
   prompts: {
     name: {
       type: 'string',
       required: true,
-      message: 'Project name'
+      message: 'Project name',
     },
     description: {
       type: 'string',
       required: false,
       message: 'Project description',
-      default: 'A Vue.js project'
+      default: 'A Vue.js project',
     },
     author: {
       type: 'string',
-      message: 'Author'
+      message: 'Author',
     },
     build: {
       type: 'list',
@@ -61,40 +61,40 @@ module.exports = {
         {
           name: 'Runtime + Compiler: recommended for most users',
           value: 'standalone',
-          short: 'standalone'
+          short: 'standalone',
         },
         {
           name: 'Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere',
           value: 'runtime',
-          short: 'runtime'
-        }
-      ]
+          short: 'runtime',
+        },
+      ],
     },
     router: {
       type: 'confirm',
-      message: 'Use vue-router for routing logic?'
+      message: 'Use vue-router for routing logic?',
     },
     store: {
       type: 'confirm',
-      message: 'Use vuex for state management?'
+      message: 'Use vuex for state management?',
     },
     material: {
       type: 'confirm',
-      message: 'Use material design lite for UI?'
+      message: 'Use material design lite for UI?',
     },
     auth: {
       when: 'router',
       type: 'confirm',
-      message: 'Add user management using Auth0?'
+      message: 'Add user management using Auth0?',
     },
     persist: {
       when: 'store',
       type: 'confirm',
-      message: 'Persist state to localstorage?'
+      message: 'Persist state to localstorage?',
     },
     validate: {
       type: 'confirm',
-      message: 'Use validation plugin?'
+      message: 'Use validation plugin?',
     },
     api: {
       type: 'list',
@@ -103,23 +103,23 @@ module.exports = {
         {
           name: 'GraphQL',
           value: 'graphql',
-          short: 'graphql'
+          short: 'graphql',
         },
         {
           name: 'HTTP',
           value: 'http',
-          short: 'http'
+          short: 'http',
         },
         {
           name: 'none (configure it yourself)',
           value: 'none',
-          short: 'none'
+          short: 'none',
         }
       ]
     },
     lint: {
       type: 'confirm',
-      message: 'Use ESLint to lint your code?'
+      message: 'Use ESLint to lint your code?',
     },
     lintConfig: {
       when: 'lint',
@@ -129,23 +129,23 @@ module.exports = {
         {
           name: 'Standard (https://github.com/standard/standard)',
           value: 'standard',
-          short: 'Standard'
+          short: 'Standard',
         },
         {
           name: 'Airbnb (https://github.com/airbnb/javascript)',
           value: 'airbnb',
-          short: 'Airbnb'
+          short: 'Airbnb',
         },
         {
           name: 'none (configure it yourself)',
           value: 'none',
-          short: 'none'
-        }
-      ]
+          short: 'none',
+        },
+      ],
     },
     unit: {
       type: 'confirm',
-      message: 'Set up unit tests'
+      message: 'Set up unit tests',
     },
     runner: {
       when: 'unit',
@@ -155,23 +155,23 @@ module.exports = {
         {
           name: 'Jest',
           value: 'jest',
-          short: 'jest'
+          short: 'jest',
         },
         {
           name: 'Karma and Mocha',
           value: 'karma',
-          short: 'karma'
+          short: 'karma',
         },
         {
           name: 'none (configure it yourself)',
           value: 'noTest',
-          short: 'noTest'
-        }
-      ]
+          short: 'noTest',
+        },
+      ],
     },
     e2e: {
       type: 'confirm',
-      message: 'Setup e2e tests with Nightwatch?'
+      message: 'Setup e2e tests with Nightwatch?',
     },
     storybook: {
       type: 'confirm',
@@ -184,20 +184,20 @@ module.exports = {
         {
           name: 'Yes, use NPM',
           value: 'npm',
-          short: 'npm'
+          short: 'npm',
         },
         {
           name: 'Yes, use Yarn',
           value: 'yarn',
-          short: 'yarn'
+          short: 'yarn',
         },
         {
           name: 'No, I will handle that myself',
           value: false,
-          short: 'no'
-        }
-      ]
-    }
+          short: 'no',
+        },
+      ],
+    },
   },
   'filters': {
     'src/router/**/*': 'router',
@@ -217,9 +217,9 @@ module.exports = {
     'test/unit/setup.js': "unit && runner === 'jest'",
     'test/e2e/**/*': 'e2e',
     'config/storybook/**/*': 'storybook',
-    'src/stories.js': 'storybook'
+    'src/stories.js': 'storybook',
   },
-  'complete': function (data, { chalk }) {
+  complete: function (data, { chalk }) {
 
     const green = chalk.green
 
@@ -229,15 +229,17 @@ module.exports = {
 
     if (data.autoInstall) {
       installDependencies(cwd, data.autoInstall, green)
-      .then(() => {
-        return runLintFix(cwd, data, green)
-      })
-      .then(() => {
-        printMessage(data, green)
-      })
+        .then(() => {
+          return runLintFix(cwd, data, green)
+        })
+        .then(() => {
+          printMessage(data, green)
+        })
+        .catch(e => {
+          console.log(chalk.red('Error:'), e)
+        })
     } else {
       printMessage(data, chalk)
     }
-
-  }
-};
+  },
+}
