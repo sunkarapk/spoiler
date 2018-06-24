@@ -8,7 +8,7 @@ export default {
 
   lock: new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
-      redirectUrl: 'http://localhost:8000/callback',
+      redirectUrl: `${process.env.HOST}/callback`,
       responseType: 'token'
     }
   }),
