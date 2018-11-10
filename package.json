@@ -1,9 +1,0 @@
-{
-  "name": "spoiler",
-  "version": "2.0.0",
-  "license": "MIT",
-  "description": "A full-featured Webpack setup with vue-router, vuex, hot-reload, lint-on-save & css extraction.",
-  "devDependencies": {
-    "@vue/cli": ""
-  }
-}

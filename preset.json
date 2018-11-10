@@ -1,0 +1,71 @@
+{
+  "useConfigFiles": true,
+  "plugins": {
+    "@vue/cli-plugin-babel": {},
+    "@vue/cli-plugin-eslint": {
+      "config": "airbnb",
+      "lintOn": []
+    },
+    "vue-cli-plugin-store": {
+      "version": "0.x.x",
+      "type": "init",
+      "persist": true
+    },
+    "vue-cli-plugin-route": {
+      "version": "0.x.x",
+      "type": "init",
+      "history": true
+    },
+    "vue-cli-plugin-s3-deploy": {
+      "version": "^3.0.0",
+      "region": "us-east-1",
+      "bucket": "bucket",
+      "enableCloudfront": true,
+      "cloudfrontId": "cloudfrontId",
+      "cloudfrontMatchers": "/index.html"
+    },
+    "vue-cli-plugin-storybook": {
+      "version": "0.x.x",
+      "type": "init"
+    }
+  },
+  "configs": {
+    "vue": {
+      "devServer": {
+        "port": 8000,
+        "open": true
+      }
+    },
+    "eslintConfig": {
+      "rules": {
+        "no-param-reassign": [
+          "error",
+          {
+            "props": true,
+            "ignorePropertyModificationsFor": [
+              "state",
+              "acc",
+              "e"
+            ]
+          }
+        ],
+        "unicorn/filename-case": "off"
+      },
+      "extends": [
+        "plugin:unicorn/recommended"
+      ]
+    },
+    "postcss": {
+      "plugins": {
+        "postcss-import": {},
+        "postcss-url": {}
+      }
+    },
+    "devDependencies": {
+      "eslint-plugin-unicorn": "^6.0.0",
+      "postcss-import": "^11.0.0",
+      "postcss-url": "^7.0.0"
+    }
+  },
+  "cssPreprocessor": "less"
+}
