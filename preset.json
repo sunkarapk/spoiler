@@ -18,14 +18,18 @@
     },
     "vue-cli-plugin-s3-deploy": {
       "version": "^3.0.0",
+      "awsProfile": "default",
       "region": "us-east-1",
       "bucket": "bucket",
+      "assetPath": "dist",
+      "assetMatch": "**",
+      "deployPath": "/",
       "enableCloudfront": true,
       "cloudfrontId": "cloudfrontId",
       "cloudfrontMatchers": "/index.html"
     },
     "vue-cli-plugin-storybook": {
-      "version": "0.x.x",
+      "version": "^0.5.1",
       "type": "init"
     }
   },
@@ -38,6 +42,8 @@
     },
     "eslintConfig": {
       "rules": {
+        "consistent-return": "off",
+        "max-len": "off",
         "no-param-reassign": [
           "error",
           {
@@ -62,9 +68,9 @@
       }
     },
     "devDependencies": {
-      "eslint-plugin-unicorn": "^6.0.0",
-      "postcss-import": "^11.0.0",
-      "postcss-url": "^7.0.0"
+      "eslint-plugin-unicorn": "^7.0.0",
+      "postcss-import": "^12.0.0",
+      "postcss-url": "^8.0.0"
     }
   },
   "cssPreprocessor": "less"
