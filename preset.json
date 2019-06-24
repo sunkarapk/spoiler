@@ -16,6 +16,12 @@
       "type": "init",
       "history": true
     },
+    "vue-cli-plugin-auth": {
+      "version": "^0.1.0",
+      "type": "auth0",
+      "subdomain": "subdomain",
+      "clientID": "secret"
+    },
     "vue-cli-plugin-s3-deploy": {
       "version": "^3.0.0",
       "awsProfile": "default",
